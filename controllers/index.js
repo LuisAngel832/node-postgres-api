@@ -27,7 +27,45 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const [updated] = await models.User.update(req.body, {
+            where: { id: id }
+        });
+
+        if (updated) {
+            const updatedUser = await models.User.findOne({ where: { id: id } });
+            return res.status(200).json({ user: updatedUser });
+        }
+
+        return res.status(404).json({ error: "Usuario no encontrado" });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleted = await models.User.destroy({
+            where: { id: id }
+        });
+
+        if (deleted) {
+            return res.status(200).json({ message: "Usuario eliminado" });
+        }
+
+        return res.status(404).json({ error: "Usuario no encontrado" });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     createUser,
-    getAllUsers
+    getAllUsers,
+    updateUser,
+    deleteUser
 };
+

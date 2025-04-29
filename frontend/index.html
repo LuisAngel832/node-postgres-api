@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Consumo de REST-API de Usuarios</title>
+  <title>Consumo de REST-API de Usuarios</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="callrestapi.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <p>Consumo de REST-API de Usuarios</p>
 
-    <div>
-        <label>Name: </label>
-        <input type="text" id="name">
-    </div>
-    <div>
-        <label>Email: </label>
-        <input type="text" id="email">
-    </div>
-    <div>
-        <label>Age: </label>
-        <input type="text" id="age">
-    </div>
-    <div>
-        <label>Comments: </label>
-        <input type="text" id="comments">
-    </div>
+<h1>Consumo de REST-API de Usuarios</h1>
 
-    <button onclick="postUser()">POST user</button>
-    <button onclick="getUsers()">GET usuarios</button>
+<div>
+  <label>ID (para actualizar o eliminar)</label>
+  <input type="text" id="id">
+</div>
 
-    <div id="resultado"></div>
+<div>
+  <label>Nombre</label>
+  <input type="text" id="name">
+</div>
 
-    <!-- jQuery para simplificar las llamadas AJAX -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Archivo con las funciones JavaScript -->
-    <script src="callrestapi.js"></script>
+<div>
+  <label>Email</label>
+  <input type="text" id="email">
+</div>
+
+<div>
+  <label>Edad</label>
+  <input type="text" id="age">
+</div>
+
+<div>
+  <label>Comentarios</label>
+  <input type="text" id="comments">
+</div>
+
+<br>
+
+<button onclick="postUser()">Agregar Usuario</button>
+<button onclick="getUsers()">Ver Usuarios</button>
+<button onclick="updateUser()">Actualizar Usuario</button>
+<button onclick="deleteUser()">Eliminar Usuario</button>
+
+<div id="resultado"></div>
+
 </body>
 </html>
